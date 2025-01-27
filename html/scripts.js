@@ -1,7 +1,7 @@
 // JSON өгөгдлийг татаж авах функц
 async function fetchProducts() {
     try {
-        const response = await fetch("products.json"); // JSON файлын замыг оруулна
+        const response = await fetch("https://raw.githubusercontent.com/aabanbeeben/skincare/refs/heads/main/html/products.json?token=GHSAT0AAAAAAC54ANYSFVO2WT2LTAFFQIHWZ4XJ3ZQ");
         if (!response.ok) {
             throw new Error("JSON өгөгдлийг татахад алдаа гарлаа.");
         }
