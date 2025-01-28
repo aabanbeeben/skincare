@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,17 +20,21 @@
             </ul>
         </nav>
     </header>
+
     <main>
         <h2>Бараа нэмэх</h2>
-        <input type="text" placeholder="Барааны нэр">
-        <button>Нэмэх</button>
-
+        <input type="text" id="product-name" placeholder="Барааны нэр">
+        <input type="number" id="product-price" placeholder="Үнэ">
+        <input type="text" id="product-category" placeholder="Категори">
+        <input type="text" id="product-image" placeholder="Зурагны URL">
+        <button id="add-product">Нэмэх</button>
+    
         <h2>Барааны жагсаалт</h2>
-        <ul>
-            <li>Нарны тос <button>Устгах</button></li>
-            <li>Нүүрний тос <button>Устгах</button></li>
-        </ul>
+        <ul id="product-list"></ul>
     </main>
+    
+    <script src="assets/js/admin.js"></script>
+
     <footer>
         <p>&copy; 2025 Арьс арчилгаа</p>
     </footer>

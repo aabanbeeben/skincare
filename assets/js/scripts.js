@@ -2,22 +2,18 @@
 async function fetchProducts() {
     try {
         const response = await fetch("https://raw.githubusercontent.com/aabanbeeben/skincare/refs/heads/main/assets/js/products.json");
-        if (!response.ok) {
-            throw new Error("JSON өгөгдлийг татахад алдаа гарлаа.");
-        }
-        return await response.json(); // JSON өгөгдлийг буцаана
+        if (!response.ok) throw new Error("JSON өгөгдлийг татахад алдаа гарлаа.");
+        return await response.json();
     } catch (error) {
         console.error("Алдаа:", error);
-        return []; // Алдаа гарсан тохиолдолд хоосон массив буцаана
+        return [];
     }
 }
-
 
 // HTML дээр бүтээгдэхүүнүүдийг харуулах функц
 function displayProducts(products) {
     const productList = document.getElementById("product-list");
-    productList.innerHTML = ""; // Хуучин бүтээгдэхүүнүүдийг арилгах
-
+    productList.innerHTML = ""; 
     if (products.length === 0) {
         productList.innerHTML = "<p>Тохирох бүтээгдэхүүн олдсонгүй.</p>";
         return;
@@ -43,14 +39,12 @@ function setupAddToCartButtons(products) {
     
         addToCartButtons.forEach(button => {
             button.addEventListener("click", (e) => {
-                e.preventDefault(); // Default үйлдлийг болиулах
+                e.preventDefault(); 
     
                 const productId = e.target.dataset.id;
     
-                // Одоогийн сагсны өгөгдлийг localStorage-оос авах
                 const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     
-                // JSON өгөгдлөөс сонгосон бүтээгдэхүүнийг олох
                 const selectedProduct = products.find(p => p.id == productId);
     
                 if (!selectedProduct) {
@@ -58,17 +52,15 @@ function setupAddToCartButtons(products) {
                     return;
                 }
     
-                // Сагсанд байгаа эсэхийг шалгах
                 const existingProduct = cartItems.find(item => item.id == productId);
                 if (existingProduct) {
                     alert("Энэ бүтээгдэхүүн аль хэдийн сагсанд байна!");
                 } else {
-                    // Сагсанд бүтээгдэхүүнийг нэмэх
+                    
                     cartItems.push(selectedProduct);
                     localStorage.setItem("cart", JSON.stringify(cartItems));
                     alert("Бүтээгдэхүүн амжилттай сагсанд нэмэгдлээ!");
     
-                    // Сагсны хуудас руу шилжих
                     window.location.href = "cart.html";
                 }
             });
@@ -79,20 +71,49 @@ function setupAddToCartButtons(products) {
 
 // Програм эхлүүлэх
 async function init() {
-    const products = await fetchProducts(); // JSON өгөгдлийг татах
+    const products = await fetchProducts(); 
     const { category } = getURLParams();
 
     if (category) {
-        document.getElementById("filter").value = category; // Сонгосон утгыг хадгалах
+        document.getElementById("filter").value = category; 
     }
 
-    applyFilter(products, category); // Шүүлт
-    setupFilter(products); // Товчийг тохируулах
-    setupAddToCartButtons(products); // Сагслах товчийг тохируулах
+    applyFilter(products, category); 
+    setupFilter(products); 
+    setupAddToCartButtons(products); 
 }
 
 init();
 
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("products.json")
+        .then(response => response.json())
+        .then(products => {
+            let productContainer = document.getElementById("product-container");
+            productContainer.innerHTML = "";
+
+            if (products.length === 0) {
+                productContainer.innerHTML = "<p>Одоогоор нэмэгдсэн бараа алга.</p>";
+                return;
+            }
+
+            products.forEach(product => {
+                let productCard = document.createElement("div");
+                productCard.classList.add("product-card");
+
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>Үнэ: ${product.price}₮</p>
+                    <p>Категори: ${product.category}</p>
+                    <button class="add-to-cart">Сагслах</button>
+                `;
+
+                productContainer.appendChild(productCard);
+            });
+        })
+        .catch(error => console.error("JSON-с бүтээгдэхүүн уншихад алдаа:", error));
+});
 
 
 // URL шүүлт
