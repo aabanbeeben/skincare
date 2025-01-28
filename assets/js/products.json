@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Арьсны чийгшүүлэгч тос",
+        "name": "Чийгшүүлэгч тос",
         "category": "skincare",
         "price": 15000,
         "image": "https://i5.walmartimages.com/asr/950e9ee8-36f9-45e2-9449-8b5c93ec6e56_1.d2a1e5dc4d635e82ea52d6bd4d482f04.jpeg"
@@ -15,23 +15,23 @@
     },
     {
         "id": 3,
-        "name": "Арьсны нарны хамгаалалт",
+        "name": "Нарны хамгаалалт",
         "category": "skincare",
         "price": 18000,
-        "image": "https://cdn.pixabay.com/photo/2021/09/16/15/27/cream-6630935_960_720.jpg"
+        "image": "https://www.averyperfumegallery.com/cdn/shop/products/BOSU0775_ANNEMARIE_BORLIND_SUN_CARE_Sun_Spray_SPF_20_2048x.jpg?v=1631895270"
     },
     {
         "id": 4,
         "name": "Үсний шампунь",
         "category": "haircare",
         "price": 12000,
-        "image": "https://5.imimg.com/data5/SELLER/Default/2022/3/JM/MM/TB/80377860/ponds-face-cream.jpeg"
+        "image": "https://i.ebayimg.com/images/g/qMMAAOSwN1JhL6uk/s-l1200.jpg"
     },
     {
         "id": 5,
-        "name": "Арьсны чийгшүүлэгч тос",
+        "name": "Чийгшүүлэгч тос",
         "category": "skincare",
         "price": 15000,
-        "image": "https://cdn.pixabay.com/photo/2016/11/29/13/15/cream-1869612_960_720.jpg"
+        "image": "https://cdn.cosmostore.org/cache/front/shop/products/511/1557976/650x650.jpg"
     }
 ]
