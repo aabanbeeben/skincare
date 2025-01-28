@@ -9,11 +9,11 @@ body {
 
 /* Header загвар */
 header {
-    background-color: #4CAF50;
+    background-color: pink;
     color: white;
     text-align: center;
     padding: 1rem 0;
-    border-bottom: 3px solid #388E3C;
+    border-bottom: 3px solid pink;
 }
 
 header h1 {
@@ -52,7 +52,7 @@ main {
 }
 
 main h2 {
-    color: #4CAF50;
+    color: grey;
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -67,7 +67,7 @@ main input {
 }
 
 main button {
-    background-color: #4CAF50;
+    background-color: grey;
     color: white;
     border: none;
     padding: 0.7rem 1.5rem;
@@ -77,10 +77,11 @@ main button {
     cursor: pointer;
     display: inline-block;
     margin-top: 1rem;
+    align-self: end;
 }
 
 main button:hover {
-    background-color: #388E3C;
+    background-color: pink;
 }
 
 /* Барааны жагсаалт */

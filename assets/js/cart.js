@@ -1,36 +1,25 @@
-export class Cart {
-    constructor() {
-        this.items = new Map();
+function displayCartItems() {
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartContainer = document.getElementById("cart-items");
+
+    if (cartItems.length === 0) {
+        cartContainer.innerHTML = "<p>Таны сагс хоосон байна.</p>";
+        return;
     }
 
-    addToCart(product) {
-        if (this.items.has(product.id)) {
-            this.items.get(product.id).quantity++;
-        } else {
-            this.items.set(product.id, { product, quantity: 1 });
-        }
-    }
-
-    removeFromCart(productId) {
-        this.items.delete(productId);
-    }
-
-    loadFromLocalStorage() {
-        const savedCart = JSON.parse(localStorage.getItem("cart"));
-        if (savedCart) {
-            this.items = new Map(savedCart.map(([id, item]) => [Number(id), item]));
-        }
-    }
-
-    saveToLocalStorage() {
-        localStorage.setItem("cart", JSON.stringify(Array.from(this.items.entries())));
-    }
-
-    getCartItems() {
-        return Array.from(this.items.values());
-    }
-
-    calculateTotal() {
-        return this.getCartItems().reduce((total, item) => total + item.product.price * item.quantity, 0);
-    }
+    cartItems.forEach(item => {
+        const cartItem = `
+            <div class="cart-item">
+                <img src="${item.image}" alt="${item.name}" class="cart-image">
+                <div>
+                    <h3>${item.name}</h3>
+                    <p>Үнэ: ${item.price}₮</p>
+                </div>
+            </div>
+        `;
+        cartContainer.insertAdjacentHTML("beforeend", cartItem);
+    });
 }
+
+// Програм эхлүүлэх
+displayCartItems();

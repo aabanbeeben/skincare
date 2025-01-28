@@ -9,11 +9,11 @@ body {
 
 /* Header загвар */
 header {
-    background-color: #4CAF50;
+    background-color: pink;
     color: #fff;
     text-align: center;
     padding: 1rem 0;
-    border-bottom: 3px solid #388E3C;
+    border-bottom: 3px solid pink;
 }
 
 header h1 {
@@ -53,7 +53,7 @@ main {
 }
 
 main h2 {
-    color: #4CAF50;
+    color: grey;
     margin-bottom: 1rem;
 }
 
@@ -77,7 +77,7 @@ form textarea {
 }
 
 form button {
-    background-color: #4CAF50;
+    background-color: grey;
     color: #fff;
     border: none;
     padding: 0.7rem;
@@ -88,7 +88,7 @@ form button {
 }
 
 form button:hover {
-    background-color: #388E3C;
+    background-color:#ffdd57;
 }
 
 /* Footer загвар */

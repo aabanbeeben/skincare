@@ -22,18 +22,78 @@ function displayProducts(products) {
         productList.innerHTML = "<p>Тохирох бүтээгдэхүүн олдсонгүй.</p>";
         return;
     }
-
     products.forEach(product => {
         const productCard = `
             <div class="product-card" data-category="${product.category}">
                 <img src="${product.image}" alt="${product.name}">
                 <h3>${product.name}</h3>
                 <p>Үнэ: ${product.price}₮</p>
+                <button class="add-to-cart" data-id="${product.id}">Сагслах</button>
             </div>
         `;
         productList.insertAdjacentHTML("beforeend", productCard);
     });
+
+    setupAddToCartButtons();
+   
 }
+function setupAddToCartButtons(products) {
+    function setupAddToCartButtons() {
+        const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    
+        addToCartButtons.forEach(button => {
+            button.addEventListener("click", (e) => {
+                e.preventDefault(); // Default үйлдлийг болиулах
+    
+                const productId = e.target.dataset.id;
+    
+                // Одоогийн сагсны өгөгдлийг localStorage-оос авах
+                const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    
+                // JSON өгөгдлөөс сонгосон бүтээгдэхүүнийг олох
+                const selectedProduct = products.find(p => p.id == productId);
+    
+                if (!selectedProduct) {
+                    alert("Бүтээгдэхүүн олдсонгүй!");
+                    return;
+                }
+    
+                // Сагсанд байгаа эсэхийг шалгах
+                const existingProduct = cartItems.find(item => item.id == productId);
+                if (existingProduct) {
+                    alert("Энэ бүтээгдэхүүн аль хэдийн сагсанд байна!");
+                } else {
+                    // Сагсанд бүтээгдэхүүнийг нэмэх
+                    cartItems.push(selectedProduct);
+                    localStorage.setItem("cart", JSON.stringify(cartItems));
+                    alert("Бүтээгдэхүүн амжилттай сагсанд нэмэгдлээ!");
+    
+                    // Сагсны хуудас руу шилжих
+                    window.location.href = "cart.html";
+                }
+            });
+        });
+    }
+    
+}
+
+// Програм эхлүүлэх
+async function init() {
+    const products = await fetchProducts(); // JSON өгөгдлийг татах
+    const { category } = getURLParams();
+
+    if (category) {
+        document.getElementById("filter").value = category; // Сонгосон утгыг хадгалах
+    }
+
+    applyFilter(products, category); // Шүүлт
+    setupFilter(products); // Товчийг тохируулах
+    setupAddToCartButtons(products); // Сагслах товчийг тохируулах
+}
+
+init();
+
+
 
 // URL шүүлт
 function getURLParams() {
