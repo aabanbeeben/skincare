@@ -67,47 +67,7 @@ function setupAddToCartButtons(products) {
         });
     });
 }
-// products.js
-function displayProducts(filterCategory = '', searchQuery = '') {
-    const productContainer = document.getElementById('product-container');
-    productContainer.innerHTML = '';
 
-    const products = JSON.parse(localStorage.getItem('products')) || [];
-
-    const filteredProducts = products.filter(product => {
-        const matchesCategory = filterCategory ? product.category === filterCategory : true;
-        const matchesSearch = searchQuery ? product.name.toLowerCase().includes(searchQuery.toLowerCase()) : true;
-        return matchesCategory && matchesSearch;
-    });
-
-    if (filteredProducts.length === 0) {
-        productContainer.innerHTML = '<p>Илэрц олдсонгүй.</p>';
-        return;
-    }
-
-    filteredProducts.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.classList.add('product-card');
-        productCard.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>Үнэ: ${product.price}₮</p>
-            <p>Категори: ${product.category}</p>
-            <button class="add-to-cart" data-id="${product.id}">Сагслах</button>
-        `;
-        productContainer.appendChild(productCard);
-    });
-}
-
-// Шүүлт хийх
-document.getElementById('apply-filter').addEventListener('click', () => {
-    const category = document.getElementById('category-filter').value;
-    const searchQuery = document.getElementById('search').value;
-    displayProducts(category, searchQuery);
-});
-
-// Дом ачаалагдсан үед барааны жагсаалтыг харуулах
-document.addEventListener('DOMContentLoaded', () => displayProducts());
 // URL шүүлт
 function getURLParams() {
     const params = new URLSearchParams(window.location.search);
