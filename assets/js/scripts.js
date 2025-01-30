@@ -30,92 +30,84 @@ function displayProducts(products) {
         productList.insertAdjacentHTML("beforeend", productCard);
     });
 
-    setupAddToCartButtons();
-   
+    setupAddToCartButtons(products);
 }
+
+// Сагслах товчлуурыг тохируулах функц
+// Сагслах товчлуурыг тохируулах функц
 function setupAddToCartButtons(products) {
-    function setupAddToCartButtons() {
-        const addToCartButtons = document.querySelectorAll(".add-to-cart");
-    
-        addToCartButtons.forEach(button => {
-            button.addEventListener("click", (e) => {
-                e.preventDefault(); 
-    
-                const productId = e.target.dataset.id;
-    
-                const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-    
-                const selectedProduct = products.find(p => p.id == productId);
-    
-                if (!selectedProduct) {
-                    alert("Бүтээгдэхүүн олдсонгүй!");
-                    return;
-                }
-    
-                const existingProduct = cartItems.find(item => item.id == productId);
-                if (existingProduct) {
-                    alert("Энэ бүтээгдэхүүн аль хэдийн сагсанд байна!");
-                } else {
-                    
-                    cartItems.push(selectedProduct);
-                    localStorage.setItem("cart", JSON.stringify(cartItems));
-                    alert("Бүтээгдэхүүн амжилттай сагсанд нэмэгдлээ!");
-    
-                    window.location.href = "cart.html";
-                }
-            });
-        });
-    }
-    
-}
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
 
-// Програм эхлүүлэх
-async function init() {
-    const products = await fetchProducts(); 
-    const { category } = getURLParams();
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            e.preventDefault(); 
 
-    if (category) {
-        document.getElementById("filter").value = category; 
-    }
+            const productId = e.target.dataset.id;
 
-    applyFilter(products, category); 
-    setupFilter(products); 
-    setupAddToCartButtons(products); 
-}
+            const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
-init();
+            const selectedProduct = products.find(p => p.id == productId);
 
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("products.json")
-        .then(response => response.json())
-        .then(products => {
-            let productContainer = document.getElementById("product-container");
-            productContainer.innerHTML = "";
-
-            if (products.length === 0) {
-                productContainer.innerHTML = "<p>Одоогоор нэмэгдсэн бараа алга.</p>";
+            if (!selectedProduct) {
+                alert("Бүтээгдэхүүн олдсонгүй!");
                 return;
             }
 
-            products.forEach(product => {
-                let productCard = document.createElement("div");
-                productCard.classList.add("product-card");
+            const existingProduct = cartItems.find(item => item.id == productId);
+            if (existingProduct) {
+                alert("Энэ бүтээгдэхүүн аль хэдийн сагсанд байна!");
+            } else {
+                cartItems.push(selectedProduct);
+                localStorage.setItem("cart", JSON.stringify(cartItems));
+                alert("Бүтээгдэхүүн амжилттай сагсанд нэмэгдлээ!");
 
-                productCard.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <p>Үнэ: ${product.price}₮</p>
-                    <p>Категори: ${product.category}</p>
-                    <button class="add-to-cart">Сагслах</button>
-                `;
+                // Сагс хуудас руу шилжих
+                window.location.href = "cart.html";
+            }
+        });
+    });
+}
+// products.js
+function displayProducts(filterCategory = '', searchQuery = '') {
+    const productContainer = document.getElementById('product-container');
+    productContainer.innerHTML = '';
 
-                productContainer.appendChild(productCard);
-            });
-        })
-        .catch(error => console.error("JSON-с бүтээгдэхүүн уншихад алдаа:", error));
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+
+    const filteredProducts = products.filter(product => {
+        const matchesCategory = filterCategory ? product.category === filterCategory : true;
+        const matchesSearch = searchQuery ? product.name.toLowerCase().includes(searchQuery.toLowerCase()) : true;
+        return matchesCategory && matchesSearch;
+    });
+
+    if (filteredProducts.length === 0) {
+        productContainer.innerHTML = '<p>Илэрц олдсонгүй.</p>';
+        return;
+    }
+
+    filteredProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+        productCard.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>Үнэ: ${product.price}₮</p>
+            <p>Категори: ${product.category}</p>
+            <button class="add-to-cart" data-id="${product.id}">Сагслах</button>
+        `;
+        productContainer.appendChild(productCard);
+    });
+}
+
+// Шүүлт хийх
+document.getElementById('apply-filter').addEventListener('click', () => {
+    const category = document.getElementById('category-filter').value;
+    const searchQuery = document.getElementById('search').value;
+    displayProducts(category, searchQuery);
 });
 
-
+// Дом ачаалагдсан үед барааны жагсаалтыг харуулах
+document.addEventListener('DOMContentLoaded', () => displayProducts());
 // URL шүүлт
 function getURLParams() {
     const params = new URLSearchParams(window.location.search);
@@ -158,6 +150,8 @@ async function init() {
 
     applyFilter(products, category); // Шүүлт
     setupFilter(products); // Товчийг тохируулах
+    setupAddToCartButtons(products); // Сагслах товчлуурыг тохируулах
 }
 
-init();
+// DOM бүрэн ачаалагдсаны дараа програмыг эхлүүлэх
+document.addEventListener("DOMContentLoaded", init);
