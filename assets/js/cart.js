@@ -60,35 +60,21 @@ function removeFromCart(index) {
 // DOM бүрэн ачаалагдсаны дараа сагсны жагсаалтыг харуулах
 document.addEventListener("DOMContentLoaded", displayCartItems);
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const checkoutBtn = document.getElementById("checkout-btn");
-    const paymentModal = document.getElementById("payment-modal");
-    const closeModal = document.querySelector(".close");
-    const paymentOptions = document.querySelectorAll(".payment-option");
+    const paymentMethods = document.getElementById("payment-methods");
+    const confirmPaymentBtn = document.getElementById("confirm-payment");
 
-    // Төлбөрийн модалыг нээх
-    checkoutBtn.addEventListener("click", function () {
-        paymentModal.style.display = "block";
-    });
-
-    // Төлбөрийн модалыг хаах
-    closeModal.addEventListener("click", function () {
-        paymentModal.style.display = "none";
-    });
-
-    // Гадна дарахад хаах
-    window.addEventListener("click", function (event) {
-        if (event.target === paymentModal) {
-            paymentModal.style.display = "none";
-        }
-    });
-
-    // Төлбөрийн хэрэгсэл сонгох үед
-    paymentOptions.forEach(option => {
-        option.addEventListener("click", function () {
-            const method = this.dataset.method;
-            alert(method + " аргыг сонголоо. Тун удахгүй дэмжигдэх болно!");
-            paymentModal.style.display = "none";
+    if (checkoutBtn && paymentMethods) {
+        checkoutBtn.addEventListener("click", () => {
+            paymentMethods.style.display = "block"; // Төлбөрийн хэсгийг харуулах
         });
-    });
+    }
+
+    if (confirmPaymentBtn) {
+        confirmPaymentBtn.addEventListener("click", () => {
+            alert("Таны төлбөр хийгдлээ!");
+            paymentMethods.style.display = "none"; // Төлбөр хийгдсэний дараа хаах
+        });
+    }
 });

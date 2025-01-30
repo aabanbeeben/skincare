@@ -104,7 +104,7 @@ h1 {
 }
 
 .cart-summary .btn {
-    background-color: green;
+    background-color: grey;
     color: white;
     padding: 0.5rem 1.5rem;
     border: none;
@@ -145,7 +145,7 @@ h1 {
 }
 
 .btn {
-    background-color: #4CAF50;
+    background-color: grey;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -153,11 +153,11 @@ h1 {
 }
 
 .btn:hover {
-    background-color: #45a049;
+    background-color: #ffdd57;
 }
-/* Модал үндсэн дизайн */
+
 .modal {
-    display: none; /* Анх харагдахгүй */
+    display: none; 
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -167,7 +167,6 @@ h1 {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Модалын агуулга */
 .modal-content {
     background: white;
     padding: 20px;
@@ -177,7 +176,6 @@ h1 {
     text-align: center;
 }
 
-/* Хаах товч */
 .close {
     position: absolute;
     top: 10px;
@@ -186,7 +184,6 @@ h1 {
     cursor: pointer;
 }
 
-/* Төлбөрийн сонголтын товч */
 .payment-option {
     display: block;
     width: 80%;
@@ -195,11 +192,11 @@ h1 {
     border: none;
     cursor: pointer;
     font-size: 16px;
-    background-color: #4CAF50;
+    background-color: grey;
     color: white;
     border-radius: 5px;
 }
 
 .payment-option:hover {
-    background-color: #45a049;
+    background-color: #ffdd57;
 }

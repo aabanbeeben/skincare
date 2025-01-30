@@ -9,7 +9,7 @@ body {
 main {
     max-width: 600px;
     margin: 2rem auto;
-    padding: 2rem;
+    padding: 5rem;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -25,7 +25,7 @@ main h2 {
 form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 form input, form textarea {
