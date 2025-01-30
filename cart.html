@@ -27,6 +27,16 @@
             <p id="total-price">Нийт үнэ: 0₮</p>
             <button id="checkout-btn" class="btn">Төлбөр хийх</button>
         </div>
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Төлбөрийн хэрэгслээ сонгоно уу</h2>
+            <button class="payment-option" data-method="card">Карт (VISA, MasterCard)</button>
+            <button class="payment-option" data-method="bank">Банкны шилжүүлэг</button>
+            <button class="payment-option" data-method="ewallet">Цахим төлбөр (QPay, Most Money)</button>
+        </div>
+    </div>
+
     </main>
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/app.js"></script>

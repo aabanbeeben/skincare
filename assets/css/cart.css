@@ -155,3 +155,51 @@ h1 {
 .btn:hover {
     background-color: #45a049;
 }
+/* Модал үндсэн дизайн */
+.modal {
+    display: none; /* Анх харагдахгүй */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Модалын агуулга */
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 40%;
+    margin: 10% auto;
+    text-align: center;
+}
+
+/* Хаах товч */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Төлбөрийн сонголтын товч */
+.payment-option {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+.payment-option:hover {
+    background-color: #45a049;
+}
