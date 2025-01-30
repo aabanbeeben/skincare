@@ -1,14 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
+
+
 
 header {
     background-color: pink;
@@ -41,8 +33,7 @@ footer {
     color: white;
     width: 100%;
     border-top: 2px solid #f8a9c4; 
-    height: 70px;
-    align-self: flex-end;
+    height: 40px;
     position: fixed;
     bottom: 0;
     left: 0;

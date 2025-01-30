@@ -34,7 +34,6 @@ function displayProducts(products) {
 }
 
 // Сагслах товчлуурыг тохируулах функц
-// Сагслах товчлуурыг тохируулах функц
 function setupAddToCartButtons(products) {
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
 
@@ -67,6 +66,29 @@ function setupAddToCartButtons(products) {
         });
     });
 }
+// products.html хуудасны JavaScript код
+document.addEventListener('DOMContentLoaded', function () {
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const productList = document.getElementById('product-list');
+
+    if (products.length === 0) {
+        productList.innerHTML = '<p>Барааны жагсаалт хоосон байна.</p>';
+        return;
+    }
+
+    products.forEach(product => {
+        const productCard = `
+            <div class="product-card">
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <p>Үнэ: ${product.price}₮</p>
+                <p>Ангилал: ${product.category}</p>
+                <button class="add-to-cart" data-id="${product.id}">Сагслах</button>
+            </div>
+        `;
+        productList.insertAdjacentHTML('beforeend', productCard);
+    });
+});
 
 // URL шүүлт
 function getURLParams() {
