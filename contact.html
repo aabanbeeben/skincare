@@ -22,13 +22,17 @@
     </header>
     <main>
         <h2>Холбоо барих маягт</h2>
-        <form>
-            <input type="text" placeholder="Таны нэр">
-            <input type="email" placeholder="Таны имэйл">
-            <textarea placeholder="Таны асуулт"></textarea>
-            <button>Илгээх</button>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Таны нэр" required>
+            <input type="email" id="email" placeholder="Таны имэйл" required>
+            <textarea id="message" placeholder="Таны асуулт" required></textarea>
+            <button type="submit">Илгээх</button>
         </form>
+        <p id="status"></p> 
+        <button id="view-messages">Оруулсан мэдээллүүд</button>
+        <div id="messages-list"></div> 
     </main>
+    <script src="assets/js/contact.js"></script>
     <footer>
         <p>&copy; 2025 Арьс арчилгаа</p>
     </footer>

@@ -9,7 +9,7 @@ body {
 main {
     max-width: 600px;
     margin: 2rem auto;
-    padding: 5rem;
+    padding: 2rem;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -26,6 +26,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    width: 575px;
 }
 
 form input, form textarea {
@@ -50,8 +51,20 @@ form button {
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
+    width: 595px;
 }
 
 form button:hover {
     background-color:#ffdd57;
+}
+
+#messages-list {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+}
+.message-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
 }
