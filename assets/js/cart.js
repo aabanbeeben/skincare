@@ -33,6 +33,16 @@ function displayCartItems() {
     setupRemoveButtons();
 }
 
+function setupRemoveButtons() {
+    const removeButtons = document.querySelectorAll(".remove-from-cart");
+    removeButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const index = button.getAttribute("data-index");
+            removeFromCart(index);
+        });
+    });
+}
+
 function removeFromCart(index) {
     const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     cartItems.splice(index, 1); // Тухайн индекстэй бүтээгдэхүүнийг устгах
@@ -41,8 +51,9 @@ function removeFromCart(index) {
     displayCartItems();
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
+    displayCartItems(); // Сагсны мэдээллийг анх ачаалах
+
     const checkoutBtn = document.getElementById("checkout-btn");
     const paymentMethods = document.getElementById("payment-methods");
     const confirmPaymentBtn = document.getElementById("confirm-payment");
