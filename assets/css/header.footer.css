@@ -39,3 +39,241 @@ footer {
     left: 0;
     padding: 1rem 0;
 }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #ffffff;
+    }
+    .cart-item, .modal-content, header {
+        background-color: #1e1e1e;
+        color: #ffffff;
+        border-color: #333;
+    }
+    .btn, .payment-option {
+        background-color: #444;
+        color: #fff;
+    }
+    .btn:hover, .payment-option:hover {
+        background-color: #ffdd57;
+    }
+}
+
+header {
+    background-color: pink;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links li a:hover {
+    color: #ffdd57;
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    border-top: 2px solid #f8a9c4; 
+    height: 40px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1rem 0;
+}
+
+@media (max-width: 600px) {
+    footer {
+        height: auto;
+        padding: 0.5rem 0;
+    }
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .cart-item img {
+        width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+    .cart-details {
+        width: 100%;
+    }
+    .btn, .payment-option {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+.cart-details {
+    flex: 1;
+}
+
+.cart-details h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.cart-details p {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.remove-item {
+    background-color: red;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart-summary {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.cart-summary p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.cart-summary .btn {
+    background-color: grey;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.cart-item button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.cart-item button:hover {
+    background-color: #ff1a1a;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 40%;
+    margin: 10% auto;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.payment-option {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: grey;
+    color: white;
+    border-radius: 5px;
+}
+
+.payment-option:hover {
+    background-color: #ffdd57;
+}

@@ -210,57 +210,41 @@ body {
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #121212;
-        color: #ffffff;
+        background-color: darkgrey;
+        color: black
     }
     .cart-item, .modal-content {
-        background-color: #1e1e1e;
-        color: #ffffff;
+        color: #363C37;
         border-color: #333;
     }
     .btn, .payment-option {
         background-color: #444;
         color: #fff;
     }
-    .btn:hover, .payment-option:hover {
-        background-color: #ffdd57;
-    }
-}
-
-main {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-h1 {
-    text-align: center;
 }
 
 .cart-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
+    background-color: lightgray;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 600px) {
     .cart-item {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
     }
     .cart-item img {
-        width: 100%;
+        width: 100px;
         height: auto;
+        margin-bottom: 10px;
     }
     .cart-details {
-        text-align: center;
         width: 100%;
+    }
+    .btn, .payment-option {
+        width: 100%;
+        padding: 12px;
     }
 }
 
