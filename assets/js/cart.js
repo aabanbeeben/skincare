@@ -50,15 +50,15 @@ function removeFromCart(index) {
 
     displayCartItems();
 }
-
 document.addEventListener("DOMContentLoaded", () => {
-    displayCartItems(); // Сагсны мэдээллийг анх ачаалах
+    displayCartItems();
 
     const checkoutBtn = document.getElementById("checkout-btn");
     const paymentMethods = document.getElementById("payment-methods");
     const confirmPaymentBtn = document.getElementById("confirm-payment");
+    const closePaymentBtn = document.getElementById("close-payment");
 
-    if (checkoutBtn && paymentMethods) {
+    if (checkoutBtn) {
         checkoutBtn.addEventListener("click", () => {
             paymentMethods.style.display = "block"; 
         });
@@ -66,8 +66,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (confirmPaymentBtn) {
         confirmPaymentBtn.addEventListener("click", () => {
-            alert("Таны төлбөр хийгдлээ!");
-            paymentMethods.style.display = "none"; 
+            alert("Төлбөр амжилттай хийгдлээ!");
+            paymentMethods.style.display = "none";
         });
     }
+
+    if (closePaymentBtn) {
+        closePaymentBtn.addEventListener("click", () => {
+            paymentMethods.style.display = "none";
+        });
+    }
+
+    // Дэлгэцийн гадна хэсэг дээр дарахад төлбөрийн хэсгийг хаах
+    window.addEventListener("click", (event) => {
+        if (event.target === paymentMethods) {
+            paymentMethods.style.display = "none";
+        }
+    });
 });
+
+ 

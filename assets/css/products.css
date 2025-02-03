@@ -45,26 +45,20 @@ h1 {
 
 .product-list {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 1rem; 
-    padding: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    margin-top: 0rem;
+    gap: 50px;
 }
 
-/* Бүтээгдэхүүний картын үндсэн загвар */
 .product-card {
-    width: 230px;
-    height: 400px;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background: white;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
     text-align: center;
-    padding: 1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    align-self: center;
+    width: 250px;
+    height: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .product-card:hover {
