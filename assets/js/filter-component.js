@@ -6,24 +6,33 @@ class FilterComponent extends HTMLElement {
 
     connectedCallback() {
         this.shadowRoot.innerHTML = `
+            <style>
+                :host {
+                    display: block;
+                    font-family: Arial, sans-serif;
+                }
+                select, button {
+                    margin: 5px;
+                    padding: 8px;
+                }
+            </style>
             <select id="filter">
                 <option value="">Бүгд</option>
                 <option value="skincare">Арьс арчилгаа</option>
                 <option value="haircare">Үс арчилгаа</option>
             </select>
-            <button id="apply-filter">Шүүх</button>
+            <input type="text" id="search-input" placeholder="Бүтээгдэхүүний нэр оруулна уу" />
+            <button id="apply-filter">Шүүлт хийх</button>
         `;
 
+        // Шүүлт хийх товчлуурын үйлдэл
         this.shadowRoot.getElementById("apply-filter").addEventListener("click", () => {
             const filterValue = this.shadowRoot.getElementById("filter").value;
-            this.dispatchEvent(new CustomEvent("filter-change", { detail: filterValue, bubbles: true }));
+            const searchTerm = this.shadowRoot.getElementById("search-input").value;
+            // custom event үүсгэж parent-д илгээж байгаа
+            this.dispatchEvent(new CustomEvent("filter-change", { detail: { filterValue, searchTerm }, bubbles: true }));
         });
     }
-    
 }
-function setupSearch(products) {
-    document.getElementById("search-input").addEventListener("input", () => {
-        applyFilter(products, document.getElementById("filter").value, document.getElementById("search-input").value);
-    });
-}
+
 customElements.define("filter-component", FilterComponent);

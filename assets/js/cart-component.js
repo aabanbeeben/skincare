@@ -38,8 +38,13 @@ class CartComponent extends HTMLElement {
                 `).join('')}
                 <p>Нийт үнэ: ${totalPrice}₮</p>
             </div>
-        `;
+       
+            `;
     }
 }
-
+window.addEventListener("click", (event) => {
+    if (event.target === paymentMethods) {
+        paymentMethods.style.display = "none";
+    }
+});
 customElements.define('cart-component', CartComponent);
