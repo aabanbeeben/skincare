@@ -15,28 +15,6 @@ class ProductList extends HTMLElement {
     }
 
     render() {
-        this.shadowRoot.innerHTML = `
-            <style>
-                :host {
-                    display: block;
-                }
-                .product {
-                    border: 1px solid #ccc;
-                    padding: 10px;
-                    margin: 10px;
-                }
-            </style>
-            <div class="product-list">
-                ${this.products.map(product => `
-                    <div class="product">
-                        <h3>${product.name}</h3>
-                        <p>${product.price}₮</p>
-                        <button class="add-to-cart">Сагслах</button>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-
         this.shadowRoot.querySelectorAll('.add-to-cart').forEach((button, index) => {
             button.addEventListener('click', () => {
                 const event = new CustomEvent('add-to-cart', {
