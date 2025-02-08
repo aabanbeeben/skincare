@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бараа</title>
+    <title>Арьс Арчилгааны Бүтээгдэхүүн</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/products.css">
     <link rel="stylesheet" href="assets/css/header.footer.css">
 </head>
@@ -20,27 +21,39 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <div id="product-details"></div>
-        <h1>Бараа бүтээгдэхүүн</h1>
-        <div id="product-list" class="product-list"></div>
-        <div id="product-container" class="product-grid">
-        </div>
-        <div class="filter-bar">
-            <input type="text" id="search-input" placeholder="Хайлт хийх...">
-            <select id="filter" class="filter-dropdown">
-                <option value="">Категори сонгох</option>
-                <option value="skincare">Арьс арчилгаа</option>
-                <option value="haircare">Үс арчилгаа</option>
-            </select>
-            <button id="apply-filter" class="btn">Шүүлт хийх</button>
-        </div>
-        <div id="product-container" class="product-grid"></div>
-        <div id="product-list" class="product-list"></div>
-        <div id="products-container"></div>
 
+    <main>
+        <div class="slideshow">
+            <img id="slideshow-image" src="https://www.byrdie.com/thmb/vkK8odMxCbDvBXlBR5RO4faUGF8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Byr_BeautyAwards_Skin_Social-31595ff792af4b029a6f714f332a4f13.jpg" alt="Slideshow Image">
+        </div>
+
+        <section class="hero">
+            <h1>Арьс Арчилгааны Бүтээгдэхүүн</h1>
+            <p>Эрүүл, гоо үзэсгэлэнтэй арьсны төлөө.</p>
+            <a href="products.html" class="btn">Бараа Үзэх</a>
+        </section>
     </main>
-    <script src="assets/js/app.js"></script>
+
+    <script>
+        const images = [
+            "https://www.byrdie.com/thmb/vkK8odMxCbDvBXlBR5RO4faUGF8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Byr_BeautyAwards_Skin_Social-31595ff792af4b029a6f714f332a4f13.jpg",
+            "https://media.licdn.com/dms/image/D5612AQHBIjL3QVJkVg/article-cover_image-shrink_720_1280/0/1710750679655?e=2147483647&v=beta&t=K0if12aoIWNhlt2ma6XFTJOzPtyA_XClsGHEBCYEVXg",
+            "https://img.freepik.com/premium-psd/mock-up-cosmetic-products-selfcare_23-2149296919.jpg?semt=ais_hybrid",
+            "https://img.freepik.com/free-photo/spa-concept-with-wooden-bowls_23-2148268453.jpg?semt=ais_hybrid"
+        ];
+
+        const slideshowImage = document.getElementById("slideshow-image");
+        let currentIndex = 0;
+
+        function changeImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            slideshowImage.src = images[currentIndex];
+        }
+
+        setInterval(changeImage, 3000);
+    </script>
+
+    <script src="assets/js/app.js" type="module"></script>
     <script src="assets/js/product-list.js"></script>
     <script src="assets/js/filter-component.js"></script>
     <script src="assets/js/scripts.js"></script>
