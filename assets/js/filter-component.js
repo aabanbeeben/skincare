@@ -5,38 +5,25 @@ class FilterComponent extends HTMLElement {
     }
 
     connectedCallback() {
-        this.shadowRoot.getElementById('apply-filter').addEventListener('click', () => {
-            const filterValue = this.shadowRoot.getElementById('filter').value;
-            const event = new CustomEvent('filter-change', {
-                detail: filterValue
-            });
-            this.dispatchEvent(event);
+        this.shadowRoot.innerHTML = `
+            <select id="filter">
+                <option value="">Бүгд</option>
+                <option value="skincare">Арьс арчилгаа</option>
+                <option value="haircare">Үс арчилгаа</option>
+            </select>
+            <button id="apply-filter">Шүүх</button>
+        `;
+
+        this.shadowRoot.getElementById("apply-filter").addEventListener("click", () => {
+            const filterValue = this.shadowRoot.getElementById("filter").value;
+            this.dispatchEvent(new CustomEvent("filter-change", { detail: filterValue, bubbles: true }));
         });
     }
+    
 }
-
-customElements.define('filter-component', FilterComponent);
-
-filter-CompositionEvent.js
-
-class FilterComponent extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-    }
-
-    connectedCallback() {
-        this.shadowRoot.innerHTML = 
-
-        this.shadowRoot.getElementById('apply-filter').addEventListener('click', () => {
-            const filterValue = this.shadowRoot.getElementById('filter').value;
-            const event = new CustomEvent('filter-change', {
-                detail: filterValue
-            });
-            this.dispatchEvent(event);
-        });
-    }
+function setupSearch(products) {
+    document.getElementById("search-input").addEventListener("input", () => {
+        applyFilter(products, document.getElementById("filter").value, document.getElementById("search-input").value);
+    });
 }
-
-customElements.define('filter-component', FilterComponent);
-
+customElements.define("filter-component", FilterComponent);

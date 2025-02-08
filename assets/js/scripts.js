@@ -53,12 +53,6 @@ function setupFilter(products) {
     });
 }
 
-// Хайлт хийх тохиргоо
-function setupSearch(products) {
-    document.getElementById("search-input").addEventListener("input", () => {
-        applyFilter(products, document.getElementById("filter").value, document.getElementById("search-input").value);
-    });
-}
 
 // Програм эхлүүлэх
 async function init() {
