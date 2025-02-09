@@ -39,3 +39,93 @@ footer {
     left: 0;
     padding: 1rem 0;
 }
+/* Dark Mode & Responsive Navbar CSS */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 1000; /* Header-г дээд давхаргад гаргана */
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1100; /* Товчлуурыг хамгийн дээд давхаргад гаргана */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    z-index: 1000; /* Цэсийг урд байрлуулна */
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links li a:hover {
+    color: #ffdd57;
+}
+
+footer {
+    text-align: center;
+    background-color: #222;
+    color: white;
+    width: 100%;
+    border-top: 2px solid #f8a9c4;
+    height: 40px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1rem 0;
+}
+
+/* Гар утасны хувилбар */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 1000; /* Гар утасны цэсийг урд талд гаргана */
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        padding: 1rem 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}

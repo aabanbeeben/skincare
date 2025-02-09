@@ -19,6 +19,8 @@
                 <li><a href="contact.html">Холбоо Барих</a></li>
             </ul>
         </nav>
+        <button class="menu-toggle">☰</button>
+        <ul class="nav-links"></ul>
     </header>
     <main>
         <div id="product-details"></div>
@@ -42,7 +44,17 @@
     <script src="assets/js/product-list.js"></script>
     <script src="assets/js/filter-component.js"></script>
     <script src="assets/js/scripts.js"></script>
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
+    
+            menuToggle.addEventListener("click", function() {
+                navLinks.classList.toggle("active");
+            });
+        });
+    </script>
+    
     <footer>
         <p>&copy; 2025 Арьс арчилгаа</p>
     </footer>

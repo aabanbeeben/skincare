@@ -20,6 +20,8 @@
                 <li><a href="contact.html">Холбоо Барих</a></li>
             </ul>
         </nav>
+            <button class="menu-toggle">☰</button>
+            <ul class="nav-links"></ul>
     </header>
 
     <main>
@@ -52,7 +54,17 @@
 
         setInterval(changeImage, 3000);
     </script>
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
+    
+            menuToggle.addEventListener("click", function() {
+                navLinks.classList.toggle("active");
+            });
+        });
+    </script>
+    
     <script src="assets/js/app.js" type="module"></script>
     <script src="assets/js/product-list.js"></script>
     <script src="assets/js/filter-component.js"></script>

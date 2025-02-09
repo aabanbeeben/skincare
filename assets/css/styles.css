@@ -83,3 +83,47 @@ body[data-theme="dark"] {
     color: var(--text-dark);
 }
 
+@media (max-width: 768px) {
+    main {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .slideshow {
+        height: 250px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-content {
+        padding: 1rem;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #2e2e2e;
+        color: #ffffff;
+    }
+
+    .hero-content {
+        background: rgba(255, 255, 255, 0.1);
+        color: #dcdcdc;
+    }
+
+    .hero .btn {
+        background-color: #ffdd57;
+        color: #000;
+    }
+
+    .hero .btn:hover {
+        background-color: #ffc107;
+    }
+}
